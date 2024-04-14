@@ -13,11 +13,7 @@ get_docker_secret() {
 }
 
 # Get the Docker secrets
-get_docker_secret "DB_USER"
 get_docker_secret "DB_PASSWORD"
-get_docker_secret "DB_NAME"
-get_docker_secret "DB_HOST"
-get_docker_secret "DB_PORT"
 
 mkdir -p /var/www/html/config;
 
