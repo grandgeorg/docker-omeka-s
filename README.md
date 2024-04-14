@@ -8,7 +8,13 @@ It also contains a `docker-compose.yml` file for running the Omeka-S Docker cont
 
 Rename the `.env.example` file to `.env` and update the environment variables with your own values.
 
-If you want to use secrets for the password variables, you must create `secrets/MYSQL_PASSWORD.txt` and `secrets/MYSQL_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below).
+### Using Secrets
+
+If you want to use secrets for the password variables, you must create `secrets/MYSQL_PASSWORD.txt` and `secrets/MYSQL_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below). Then in your `.env` file, you will only need following variables:
+
+- `MYSQL_DATABASE`
+- `MYSQL_USER`
+- `OMEKA_S_VERSION`
 
 ## Usage
 
