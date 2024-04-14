@@ -8,6 +8,8 @@ It also contains a `docker-compose.yml` file for running the Omeka-S Docker cont
 
 Rename the `.env.example` file to `.env` and update the environment variables with your own values.
 
+If you want to use secrets for the password variables, you must create `secrets/MYSQL_PASSWORD.txt` and `secrets/MYSQL_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below).
+
 ## Usage
 
 To build the Omeka-S Docker image, you can use the following command:
@@ -22,11 +24,21 @@ To run the Omeka-S Docker container, you can use the following command:
 docker compose up -d
 ```
 
+To run the Docker compose file with secrets `docker-compose-secrets.yml`, you can use the following command:
+
+```bash
+docker compose -f docker-compose-secrets.yml up -d
+```
+
 To stop the Omeka-S Docker container, you can use the following command:
 
 ```bash
 docker compose down
 ```
+
+To access the Omeka-S web interface, open your web browser and navigate to `http://localhost:8000`.
+
+To access the PHPMyAdmin web interface, open your web browser and navigate to `http://localhost:8080`.
 
 ## License
 
