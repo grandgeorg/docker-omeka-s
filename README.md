@@ -54,6 +54,17 @@ To run the Docker compose file with secrets `docker-compose-secrets.yml`, you ca
 docker compose -f docker-compose-secrets.yml up -d
 ```
 
+Assuming you set `COMPOSE_PROJECT_NAME=oms-1` the output should look like this:
+
+```
+⠋ Network oms-1-omeka-s-network     Created
+⠋ Volume "oms-1_omeka-s-db"         Created
+⠋ Volume "oms-1_omeka-s"            Created
+✔ Container oms-1-omeka-s-db-1      Started
+✔ Container oms-1-omeka-s-pma-1     Started
+✔ Container oms-1-omeka-s-app-1     Started
+```
+
 ### Stop
 
 To stop the Omeka-S Docker container, you can use the following command:
