@@ -4,7 +4,7 @@ services:
     volumes:
       - omeka-s-db:/var/lib/mysql
     environment:
-      MARIADB_DATABASE: $MYSQL_DATABASE
+      MARIADB_DATABASE: $DB_NAME
       MARIADB_USER: $DB_USERNAME
       MARIADB_PASSWORD: $DB_PASSWORD
       MARIADB_ROOT_PASSWORD: $DB_ROOT_PASSWORD
@@ -35,7 +35,7 @@ services:
     volumes:
       - omeka-s:/var/www/html
     environment:
-      DB_NAME: $MYSQL_DATABASE
+      DB_NAME: $DB_NAME
       DB_USER: $DB_USERNAME
       DB_PASSWORD: $DB_PASSWORD
       DB_HOST: omeka-s-db
