@@ -10,13 +10,15 @@ Rename the `.env.example` file to `.env` and update the environment variables wi
 
 ### Using Secrets
 
-If you want to use secrets for the password variables, you must create `secrets/MYSQL_PASSWORD.txt` and `secrets/MYSQL_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below). Then in your `.env` file, you will only need following variables:
+If you want to use secrets for the password variables, you must create `secrets/DB_PASSWORD.txt` and `secrets/DB_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below). Then in your `.env` file, you will only need following variables:
 
-- `MYSQL_DATABASE`
-- `MYSQL_USER`
+- `DB_DATABASE`
+- `DB_USERNAME`
 - `OMEKA_S_VERSION`
 
 ## Usage
+
+### Build
 
 To build the Omeka-S Docker image, you can use the following command:
 
@@ -24,7 +26,23 @@ To build the Omeka-S Docker image, you can use the following command:
 docker compose build
 ```
 
-To run the Omeka-S Docker container, you can use the following command:
+### Test
+
+To test the Docker compose file, you can use the following command:
+
+```bash
+docker compose config
+```
+
+To test the Docker compose file with secrets `docker-compose-secrets.yml`, you can use the following command:
+
+```bash
+docker compose -f docker-compose-secrets.yml config
+```
+
+### Run
+
+To run the Docker compose file, you can use the following command:
 
 ```bash
 docker compose up -d
@@ -36,11 +54,23 @@ To run the Docker compose file with secrets `docker-compose-secrets.yml`, you ca
 docker compose -f docker-compose-secrets.yml up -d
 ```
 
+### Stop
+
 To stop the Omeka-S Docker container, you can use the following command:
 
 ```bash
 docker compose down
 ```
+
+### Remove
+
+To remove the Omeka-S Docker container, you can use the following command:
+
+```bash
+docker compose down --volumes
+```
+
+### Access
 
 To access the Omeka-S web interface, open your web browser and navigate to `http://localhost:8000`.
 

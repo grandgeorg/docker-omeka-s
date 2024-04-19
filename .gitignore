@@ -1,4 +1,4 @@
 .env
 devnotes.md
-secrets/MYSQL_PASSWORD.txt
-secrets/MYSQL_ROOT_PASSWORD.txt
+secrets/DB_PASSWORD.txt
+secrets/DB_ROOT_PASSWORD.txt
