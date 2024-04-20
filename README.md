@@ -10,9 +10,10 @@ Rename the `.env.example` file to `.env` and update the environment variables wi
 
 ### Using Secrets
 
-If you want to use secrets for the password variables, you must create `secrets/DB_PASSWORD.txt` and `secrets/DB_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below). Then in your `.env` file, you will only need following variables:
+If you want to use secrets for the password variables, you must create `secrets/DB_PASSWORD.txt` and `secrets/DB_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below). Then in your `.env` file, you will only need the following variables:
 
-- `DB_DATABASE`
+- `COMPOSE_PROJECT_NAME`
+- `DB_NAME`
 - `DB_USERNAME`
 - `OMEKA_S_VERSION`
 
