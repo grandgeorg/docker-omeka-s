@@ -19,14 +19,6 @@ If you want to use secrets for the password variables, you must create `secrets/
 
 ## Usage
 
-### Build
-
-To build the Omeka-S Docker image, you can use the following command:
-
-```bash
-docker compose build
-```
-
 ### Test
 
 To test the Docker compose file, you can use the following command:
@@ -87,6 +79,25 @@ docker compose down --volumes
 To access the Omeka-S web interface, open your web browser and navigate to `http://localhost:8000`.
 
 To access the PHPMyAdmin web interface, open your web browser and navigate to `http://localhost:8080`.
+
+### Build
+
+You don't have to build the Omeka-S Docker image, as it is available on [Docker Hub](https://hub.docker.com/r/solarbaypilot/omeka-s). 
+However, if you want to build the image yourself, first make sure to change the namespace in the `docker-compose.yml` file to your own namespace. 
+
+```yaml
+# ...
+services:
+  # ...
+  omeka-s-app:
+    image: <YOUR_NAMESPACE>/omeka-s
+```
+
+Then you can build the image with the following command:
+
+```bash
+docker compose build
+```
 
 ## License
 
