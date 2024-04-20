@@ -139,4 +139,4 @@ ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["apache2-foreground"]
 
 # Build the image
-# docker build -f Dockerfile -t gws/omeka-s .
+# docker build -f Dockerfile -t solarbaypilot/omeka-s .

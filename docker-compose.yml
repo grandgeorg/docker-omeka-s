@@ -29,7 +29,7 @@ services:
       dockerfile: Dockerfile
       args:
         - OMEKA_S_VERSION=$OMEKA_S_VERSION
-    image: gws/omeka-s
+    image: solarbaypilot/omeka-s
     ports:
       - "8000:80"
     volumes:
