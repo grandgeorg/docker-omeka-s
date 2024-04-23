@@ -16,6 +16,8 @@ If you want to use secrets for the password variables, you must create `secrets/
 - `DB_NAME`
 - `DB_USERNAME`
 - `OMEKA_S_VERSION`
+- `PMA_PORT`
+- `OMEKA_S_PORT`
 
 ## Usage
 
