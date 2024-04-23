@@ -2,3 +2,4 @@
 devnotes.md
 secrets/DB_PASSWORD.txt
 secrets/DB_ROOT_PASSWORD.txt
+.vscode/settings.json
