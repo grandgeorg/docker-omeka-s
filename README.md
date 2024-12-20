@@ -6,11 +6,38 @@ It also contains a `docker-compose.yml` file for running the Omeka-S Docker cont
 
 ## Configuration
 
+### Omeka-S Directory
+
+The Omeka-S directory is (now) a bind mount volume under `./data/omeka-s` in the `docker-compose.yml` file. So make sure to create the parent directory before running the Docker container. 
+
+```bash
+mkdir ./data
+```
+
+If you prefer to use a named volume, you can change the volume entry in the `omeka-s-app` service section and uncomment the named volume in the `docker-compose.yml` file:
+
+```yaml
+services:
+  # ...
+  omeka-s-app:
+    # ...
+    volumes:
+      - omeka-s:/var/www/html
+# ...
+volumes:
+  omeka-s-db:
+  omeka-s:
+```
+
+### Environment Variables
+
 Rename the `.env.example` file to `.env` and update the environment variables with your own values.
+
+If you are running docker behind a reverse proxy, you need to set the `PUBLIC_URL` variable to the URL of your Omeka-S instance. For example, if you are running Omeka-S at `https://example.com/`, you should set `PUBLIC_URL=https://example.com/` (mind the slash at the end). (Basically this is only needed for PhpMyAdmin - Omeka-S will just work fine without it). You then have to also uncomment the `PMA_ABSOLUTE_URI` variable in your `docker-compose.yml` file.
 
 ### Using Secrets
 
-If you want to use secrets for the password variables, you must create `secrets/DB_PASSWORD.txt` and `secrets/DB_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below). Then in your `.env` file, you will only need the following variables:
+If you want to use secrets for the password variables, you must create `secrets/DB_PASSWORD.txt` and `secrets/DB_ROOT_PASSWORD.txt` and use `docker-compose-secrets.yml` file to run with Docker compose (see below) - all the above configurations also apply to this file. Then in your `.env` file, you will only need the following variables:
 
 - `COMPOSE_PROJECT_NAME`
 - `DB_NAME`
@@ -18,6 +45,7 @@ If you want to use secrets for the password variables, you must create `secrets/
 - `OMEKA_S_VERSION`
 - `PMA_PORT`
 - `OMEKA_S_PORT`
+- `PUBLIC_URL`
 
 ## Usage
 
@@ -49,7 +77,13 @@ To run the Docker compose file with secrets `docker-compose-secrets.yml`, you ca
 docker compose -f docker-compose-secrets.yml up -d
 ```
 
-Assuming you set `COMPOSE_PROJECT_NAME=oms-1` the output should look like this:
+You can also rename the `docker-compose-secrets.yml` file to `compose.yml` and then just use the default command:
+
+```bash
+docker compose up -d
+```
+
+Assuming you set `COMPOSE_PROJECT_NAME=oms-1` the output should then look like this:
 
 ```
 ⠋ Network oms-1-omeka-s-network     Created
@@ -99,6 +133,12 @@ Then you can build the image with the following command:
 
 ```bash
 docker compose build
+```
+
+If you want to overwrite a cached image, you can use the following command:
+
+```bash
+docker compose build --no-cache
 ```
 
 ## License

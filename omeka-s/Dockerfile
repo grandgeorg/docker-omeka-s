@@ -14,7 +14,7 @@ ENV DB_HOST=$DB_HOST
 ENV DB_PORT=$DB_PORT
 
 # set download link with version
-ARG OMEKA_S_VERSION=4.0.4
+ARG OMEKA_S_VERSION=4.1.1
 ENV OMEKA_S_VERSION=$OMEKA_S_VERSION
 ENV OMEKA_DOWNLOAD_URL=https://github.com/omeka/omeka-s/releases/download/v$OMEKA_S_VERSION/omeka-s-$OMEKA_S_VERSION.zip
 
@@ -58,12 +58,10 @@ RUN set -ex; \
     a2enmod remoteip; \
     \
     # Download and extract Omeka-S
-    curl -L $OMEKA_DOWNLOAD_URL -o /var/www/html/omeka-s.zip; \
-    unzip /var/www/html/omeka-s.zip -d /var/www/html; \
-    mv /var/www/html/omeka-s/* /var/www/html/; \
-    mv /var/www/html/omeka-s/.htaccess /var/www/html/; \
-    rm /var/www/html/omeka-s.zip; \
-    rm -rf /var/www/html/omeka-s; \
+    curl -L $OMEKA_DOWNLOAD_URL -o /usr/src/omeka-s.zip; \
+    unzip /usr/src/omeka-s.zip -d /usr/src; \
+    cp -r /usr/src/omeka-s/* /var/www/html/; \
+    cp /usr/src/omeka-s/.htaccess /var/www/html/; \
     \
     # Clean up
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
